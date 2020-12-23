@@ -1,3 +1,6 @@
+# Lambda function in Python 3.8 for searching for files by name in s3 bucket. Takes in two parameters, specifying (1) the bucket, (2) the search term.
+# Code was intended to be run using a rest API in API Gateway and requires an IAM role to give lambda access to s3.
+
 import json
 import botocore
 import boto3
