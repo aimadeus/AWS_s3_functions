@@ -14,10 +14,11 @@ def lambda_handler(event, context):
     list_of_filenames = []
     # searches for file based on keys in s3bucket and adds to list
     for obj in bucket.objects.all():
-        if not(str(obj.key).endswith('/')) and event['queryStringParameters']['search'] in obj.key.lower().split('/')[-1]: 
+        if not(str(obj.key).endswith('/')) and event['queryStringParameters']['search'].lower() in obj.key.lower().split('/')[-1]:
             list_of_filenames.append(obj.key)
-            
-    # response object    
+            #s3.download_file(event['queryStringParameters']['bucket'], obj.key, obj.key)
+    
+    # return list_of_filenames
     app_response = {}
     app_response['matching_files'] = list_of_filenames
     responseObject = {}
